@@ -1,0 +1,16 @@
+{
+"swagger": "2.0",
+"info": {"title": "Gulf Horizon Supplier Ratings", "description": "Fictional demo API returning supplier performance ratings for the Gulf Horizon Trading showcase.", "version": "1.0"},
+"host": "donclay-ops.github.io",
+"basePath": "/gh-supplier-portals/api",
+"schemes": ["https"],
+"produces": ["application/json"],
+"paths": {
+"/suppliers/index.json": {"get": {"operationId": "ListSupplierRatings", "summary": "List all supplier ratings", "description": "Returns on-time delivery, quality score, open quality issues and approved-vendor status for all suppliers.", "responses": {"200": {"description": "OK", "schema": {"$ref": "#/definitions/RatingList"}}}}},
+"/suppliers/{supplierId}.json": {"get": {"operationId": "GetSupplierRating", "summary": "Get rating for one supplier", "description": "Returns the performance rating for one supplier. Supplier IDs: AN (Al Noor), DL (DesertLine), MCI (Meridian).", "parameters": [{"name": "supplierId", "in": "path", "required": true, "type": "string", "enum": ["AN", "DL", "MCI"], "description": "Supplier ID: AN, DL or MCI"}], "responses": {"200": {"description": "OK", "schema": {"$ref": "#/definitions/Rating"}}}}}
+},
+"definitions": {
+"Rating": {"type": "object", "properties": {"supplierId": {"type": "string", "description": "Supplier ID: AN, DL or MCI"}, "name": {"type": "string", "description": "Supplier company name"}, "country": {"type": "string", "description": "Supplier country"}, "approvedVendor": {"type": "boolean", "description": "True if the supplier is on the approved vendor list"}, "onTimeDeliveryPct": {"type": "number", "description": "Percentage of orders delivered on time in the last 12 months"}, "qualityScore": {"type": "number", "description": "Quality score out of 5"}, "openQualityIssues": {"type": "integer", "description": "Number of open quality cases"}, "ordersLast12Months": {"type": "integer", "description": "Number of orders placed in the last 12 months"}, "notes": {"type": "string", "description": "Procurement notes about the supplier"}}},
+"RatingList": {"type": "object", "properties": {"source": {"type": "string", "description": "Name of the supplier performance register"}, "asOf": {"type": "string", "description": "Date the ratings were last updated"}, "suppliers": {"type": "array", "description": "Ratings for every supplier", "items": {"$ref": "#/definitions/Rating"}}}}
+}
+}
