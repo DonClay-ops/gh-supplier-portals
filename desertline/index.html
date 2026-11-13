@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DesertLine Trade Partner Login</title>
+<style>
+body{margin:0;font-family:Verdana,Tahoma,sans-serif;font-size:13px;background:#d9d2c3;color:#222}
+.top{background:#7a4a1e;color:#fff;padding:8px 14px;font-weight:bold;font-size:15px}
+.sub{background:#b98a52;color:#fff;padding:4px 14px;font-size:11px}
+.box{width:340px;margin:50px auto;background:#f6f1e7;border:2px solid #7a4a1e}
+.box h3{margin:0;background:#7a4a1e;color:#fff;padding:6px 10px;font-size:13px}
+table{margin:12px}
+td{padding:4px}
+input{border:1px solid #888;padding:3px;font-size:13px;width:170px}
+.btn{background:#e8dcc5;border:1px outset #999;padding:3px 14px;font-family:Verdana;font-size:12px;cursor:pointer}
+.err{color:#a00;padding:0 12px 10px}
+.demo{font-size:10px;color:#555;padding:6px 12px;border-top:1px dashed #b98a52}
+</style>
+</head>
+<body>
+<div class="top">DesertLine Furniture Trading LLC</div>
+<div class="sub">Trade Partner Extranet v2.3 &nbsp;|&nbsp; Sharjah Airport Free Zone</div>
+<div class="box">
+<h3>Trade Partner Login</h3>
+<form id="f">
+<table>
+<tr><td><label for="u">User name:</label></td><td><input id="u" name="username"></td></tr>
+<tr><td><label for="p">Password:</label></td><td><input id="p" name="password" type="password"></td></tr>
+<tr><td></td><td><input type="submit" class="btn" value="Login"></td></tr>
+</table>
+</form>
+<div class="err" id="err"></div>
+<div class="demo">Fictional demo site for a Copilot Studio showcase. Demo login: <b>gulfhorizon</b> / <b>Demo@2026</b></div>
+</div>
+<script>
+document.getElementById('f').addEventListener('submit',function(e){
+e.preventDefault();
+var u=document.getElementById('u').value.trim().toLowerCase(), p=document.getElementById('p').value;
+if(u==='gulfhorizon' && p==='Demo@2026'){ try{sessionStorage.setItem('dl_auth','1')}catch(x){} location.href='main.html'; }
+else document.getElementById('err').textContent='Login failed. Please check user name and password.';
+});
+</script>
+</body>
+</html>
