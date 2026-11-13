@@ -1,0 +1,9 @@
+{
+"source": "Gulf Horizon Trading - Supplier Performance Register (fictional demo data)",
+"asOf": "2026-11-01",
+"suppliers": [
+{"supplierId": "AN", "name": "Al Noor Office Systems LLC", "country": "UAE", "approvedVendor": true, "onTimeDeliveryPct": 96, "qualityScore": 4.6, "openQualityIssues": 0, "ordersLast12Months": 14, "notes": "Preferred vendor for Dubai fit-outs. Installation team rated highly."},
+{"supplierId": "DL", "name": "DesertLine Furniture Trading LLC", "country": "UAE", "approvedVendor": true, "onTimeDeliveryPct": 81, "qualityScore": 3.4, "openQualityIssues": 2, "ordersLast12Months": 9, "notes": "Two open quality cases on chair mechanisms (QC-2026-031, QC-2026-044). Requires QA inspection before delivery acceptance."},
+{"supplierId": "MCI", "name": "Meridian Contract Interiors GmbH", "country": "Germany", "approvedVendor": false, "onTimeDeliveryPct": 88, "qualityScore": 4.8, "openQualityIssues": 0, "ordersLast12Months": 2, "notes": "Not yet an approved vendor. New vendor onboarding takes about 2 weeks (see Procurement Policy section 4)."}
+]
+}
