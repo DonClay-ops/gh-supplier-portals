@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Al Noor Supplier Portal</title>
+<style>
+:root{--brand:#0f6e6e;--ink:#1d2a2a;--bg:#f3f7f7}
+*{box-sizing:border-box} body{margin:0;font-family:"Segoe UI",Arial,sans-serif;background:var(--bg);color:var(--ink)}
+header{background:var(--brand);color:#fff;padding:14px 24px;display:flex;align-items:center;gap:12px}
+header .logo{width:34px;height:34px;border-radius:50%;background:#f2c14e;display:grid;place-items:center;font-weight:700;color:#0f6e6e}
+header h1{font-size:18px;margin:0;font-weight:600}
+.wrap{max-width:420px;margin:60px auto;background:#fff;border-radius:12px;padding:28px;box-shadow:0 4px 18px rgba(0,0,0,.08)}
+label{display:block;font-size:13px;margin:14px 0 4px;font-weight:600}
+input{width:100%;padding:10px;border:1px solid #c9d6d6;border-radius:6px;font-size:15px}
+button{margin-top:20px;width:100%;padding:11px;background:var(--brand);color:#fff;border:0;border-radius:6px;font-size:15px;cursor:pointer}
+.err{color:#b3261e;font-size:13px;margin-top:10px;min-height:18px}
+.demo{font-size:12px;color:#5c6b6b;margin-top:18px;border-top:1px solid #e3eaea;padding-top:12px}
+footer{text-align:center;font-size:12px;color:#6b7a7a;margin:30px}
+</style>
+</head>
+<body>
+<header><div class="logo">AN</div><h1>Al Noor Office Systems LLC &middot; Supplier Portal</h1></header>
+<div class="wrap">
+<h2 style="margin-top:0;font-size:20px">Customer sign in</h2>
+<p style="font-size:14px;color:#4a5a5a">View your RFQ responses, quotations and order status.</p>
+<form id="f">
+<label for="u">Customer ID</label>
+<input id="u" name="username" autocomplete="username">
+<label for="p">Password</label>
+<input id="p" name="password" type="password" autocomplete="current-password">
+<button type="submit">Sign in</button>
+<div class="err" id="err"></div>
+</form>
+<div class="demo">Fictional demo site for a Copilot Studio showcase. Demo login: <b>GHT-1042</b> / <b>Demo@2026</b></div>
+</div>
+<footer>Al Noor Office Systems LLC &middot; Al Quoz Industrial 3, Dubai &middot; fictional company</footer>
+<script>
+document.getElementById('f').addEventListener('submit',function(e){
+e.preventDefault();
+var u=document.getElementById('u').value.trim(), p=document.getElementById('p').value;
+if(u.toUpperCase()==='GHT-1042' && p==='Demo@2026'){
+try{sessionStorage.setItem('an_auth','1')}catch(x){}
+location.href='portal.html';
+} else { document.getElementById('err').textContent='Invalid Customer ID or password.'; }
+});
+</script>
+</body>
+</html>
