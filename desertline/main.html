@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DesertLine Extranet - Quotations</title>
+<style>
+body{margin:0;font-family:Verdana,Tahoma,sans-serif;font-size:12px;background:#d9d2c3;color:#222}
+.top{background:#7a4a1e;color:#fff;padding:8px 14px;font-weight:bold;font-size:15px}
+.sub{background:#b98a52;color:#fff;padding:4px 14px;font-size:11px}
+.layout{display:flex;min-height:80vh}
+.menu{width:170px;background:#efe6d4;border-right:2px solid #7a4a1e;padding:10px}
+.menu a{display:block;color:#5a3210;padding:4px 0;cursor:pointer;text-decoration:underline}
+.content{flex:1;padding:14px;background:#fbf8f2}
+fieldset{border:1px solid #b98a52;margin-bottom:12px} legend{font-weight:bold;color:#7a4a1e}
+input,select{border:1px solid #888;padding:2px;font-size:12px}
+.btn{background:#e8dcc5;border:1px outset #999;padding:2px 12px;font-family:Verdana;font-size:12px;cursor:pointer}
+table.grid{border-collapse:collapse;width:100%;margin-top:8px}
+table.grid th{background:#b98a52;color:#fff;padding:4px;border:1px solid #7a4a1e;text-align:left}
+table.grid td{padding:4px;border:1px solid #c9b48f}
+.r{text-align:right}
+.hidden{display:none}
+.msg{color:#a00}
+</style>
+</head>
+<body>
+<div class="top">DesertLine Furniture Trading LLC</div>
+<div class="sub">Trade Partner Extranet v2.3 &nbsp;|&nbsp; Logged in as: gulfhorizon (Gulf Horizon Trading LLC) &nbsp;|&nbsp; <a style="color:#fff" href="index.html">Logout</a></div>
+<div class="layout">
+<div class="menu">
+<b>MAIN MENU</b><br><br>
+<a data-p="news">News</a>
+<a data-p="cat">Price Catalogue</a>
+<a data-p="quo">Quotations</a>
+<a data-p="inv">Invoices</a>
+</div>
+<div class="content">
+<div id="news">
+<fieldset><legend>News</legend>
+<p>Winter catalogue 2026/27 now available. Contact your account manager for project pricing.</p>
+<p>To view a project quotation, open <b>Quotations</b> from the main menu and search by your RFQ reference.</p></fieldset>
+</div>
+<div id="cat" class="hidden"><fieldset><legend>Price Catalogue</legend><p>Catalogue download temporarily unavailable.</p></fieldset></div>
+<div id="inv" class="hidden"><fieldset><legend>Invoices</legend><p>No invoices found.</p></fieldset></div>
+<div id="quo" class="hidden">
+<fieldset><legend>Quotation Search</legend>
+<label for="ref">Customer RFQ Ref.:</label> <input id="ref" size="18">
+<label for="yr">Year:</label> <select id="yr"><option>2025</option><option selected>2026</option></select>
+<input type="button" class="btn" id="go" value="Search">
+<div class="msg" id="msg"></div>
+</fieldset>
+<div id="res" class="hidden">
+<fieldset><legend>Quotation DL/Q/26/4471 &nbsp; (RFQ-2026-118 Marina Tower fit-out)</legend>
+<table>
+<tr><td>Quote date:</td><td>11/11/2026</td><td width="30"></td><td>Currency:</td><td><b>USD</b></td></tr>
+<tr><td>Lead time:</td><td>5 weeks</td><td></td><td>Payment:</td><td>50% advance, 50% on delivery</td></tr>
+<tr><td>Delivery:</td><td>USD 1,800.00 flat (UAE)</td><td></td><td>Installation:</td><td>Not included (optional USD 2,400.00)</td></tr>
+<tr><td>Warranty:</td><td>2 years</td><td></td><td>Validity:</td><td>30 days</td></tr>
+</table>
+<table class="grid">
+<tr><th>Line</th><th>Description</th><th class="r">Qty</th><th class="r">Unit USD</th><th class="r">Amount USD</th></tr>
+<tr><td>10</td><td>EXEC DESK 1600 OAK</td><td class="r">120</td><td class="r">365.00</td><td class="r">43,800.00</td></tr>
+<tr><td>20</td><td>TASK CHAIR MESH ERGO</td><td class="r">120</td><td class="r">172.00</td><td class="r">20,640.00</td></tr>
+<tr><td>30</td><td>PEDESTAL MOBILE 3DRW</td><td class="r">30</td><td class="r">128.00</td><td class="r">3,840.00</td></tr>
+<tr><td></td><td>DELIVERY CHARGE</td><td class="r">1</td><td class="r">1,800.00</td><td class="r">1,800.00</td></tr>
+<tr><td></td><td colspan="3"><b>TOTAL (excl. VAT, excl. installation)</b></td><td class="r"><b>70,080.00</b></td></tr>
+</table>
+</fieldset>
+</div>
+</div>
+</div>
+</div>
+<script>
+var ok=false; try{ok=sessionStorage.getItem('dl_auth')==='1'}catch(e){ok=true}
+if(!ok){location.href='index.html'}
+document.querySelectorAll('.menu a').forEach(function(a){a.addEventListener('click',function(){
+['news','cat','quo','inv'].forEach(function(id){document.getElementById(id).classList.toggle('hidden',id!==a.dataset.p)});
+});});
+document.getElementById('go').addEventListener('click',function(){
+var r=document.getElementById('ref').value.trim().toUpperCase();
+var y=document.getElementById('yr').value;
+var ok=(r==='RFQ-2026-118'||r==='2026-118'||r==='118') && y==='2026';
+document.getElementById('res').classList.toggle('hidden',!ok);
+document.getElementById('msg').textContent=ok?'':'No quotation found for this reference.';
+});
+</script>
+</body>
+</html>
